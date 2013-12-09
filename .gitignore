@@ -11,3 +11,10 @@
 *.lai
 *.la
 *.a
+
+*.dll
+*.opensdf
+*.sdf
+*.suo
+*.user
+
