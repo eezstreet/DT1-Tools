@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <mem.h>
-#include <dir.h>
+//#include <mem.h>
+//#include <dir.h>
 
 #include <allegro.h>
 
@@ -17,7 +17,7 @@
 #endif
 
 // reducing size of executable, for the allegro 3.9.34 (wip) lib
-
+/*
 BEGIN_COLOR_DEPTH_LIST
    COLOR_DEPTH_8
 END_COLOR_DEPTH_LIST
@@ -29,7 +29,7 @@ END_MIDI_DRIVER_LIST
 BEGIN_DIGI_DRIVER_LIST
    DIGI_DRIVER_SB
 END_DIGI_DRIVER_LIST
-
+*/
 typedef struct
 {
    WORD  xpos;
@@ -373,7 +373,7 @@ void read_tiles_of_block(FILE * in, long b)
 // draw a 3d-isometric sub-tile
 void draw_sub_tile_isometric (BITMAP * dst, int x0, int y0, const UBYTE * data, int length)
 {
-   UBYTE * ptr = data;
+   UBYTE * ptr = (unsigned char *)data;
    int   x, y=0, n,
          xjump[15] = {14, 12, 10, 8, 6, 4, 2, 0, 2, 4, 6, 8, 10, 12, 14},
          nbpix[15] = {4, 8, 12, 16, 20, 24, 28, 32, 28, 24, 20, 16, 12, 8, 4};
@@ -404,7 +404,7 @@ void draw_sub_tile_isometric (BITMAP * dst, int x0, int y0, const UBYTE * data, 
 // draw a normal sub-tile (can be transparent, so there are "jump" coded)
 void draw_sub_tile_normal (BITMAP * dst, int x0, int y0, const UBYTE * data, int length)
 {
-   UBYTE * ptr = data, b1, b2;
+   UBYTE * ptr = (unsigned char*)data, b1, b2;
    int   x=0, y=0;
 
    // draw
@@ -475,7 +475,19 @@ void new_gfx_mode(int x, int y)
 }
 
 // ==========================================================================
-int main(int argc, char * argv[])
+int file_exists( char *file ) 
+{
+	FILE *f;
+	if((f = fopen(file, "r")) == NULL)
+	{
+		fclose(f);
+		return 0;
+	}
+	return 1;
+}
+
+// ==========================================================================
+int main(int argc, char ** argv)
 {
    BLOCK_S    * block_ptr=NULL;
    SUB_TILE_S * tile_ptr=NULL;
@@ -849,12 +861,12 @@ int main(int argc, char * argv[])
                          break;
 
          case KEY_P    : sprintf(tmp, "screenshot-%05i.pcx", scr);
-                         while (__file_exists(tmp))
+                         while (file_exists(tmp))
                          {
                             scr++;
                             sprintf(tmp, "screenshot-%05i.pcx", scr);
                          }
-                         save_pcx(tmp, tmpbmp, &the_pal);
+                         save_pcx(tmp, tmpbmp, (const RGB *)&the_pal);
                          scr++;
                          break;
 
