@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <mem.h>
-#include <dir.h>
-
+//#include <mem.h>
+//#include <dir.h>
+#define ALLEGRO_NO_MAGIC_MAIN
 #include <allegro.h>
 
 #define WORD  short int
@@ -33,7 +33,7 @@
 
 // reducing size of executable, for the allegro 3.9.34 (wip) lib
 
-BEGIN_COLOR_DEPTH_LIST
+/*BEGIN_COLOR_DEPTH_LIST
    COLOR_DEPTH_8
 END_COLOR_DEPTH_LIST
 
@@ -43,7 +43,7 @@ END_MIDI_DRIVER_LIST
 
 BEGIN_DIGI_DRIVER_LIST
    DIGI_DRIVER_SB
-END_DIGI_DRIVER_LIST
+END_DIGI_DRIVER_LIST*/
 
 typedef struct
 {

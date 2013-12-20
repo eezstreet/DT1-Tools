@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <mem.h>
+//#include <mem.h>
 #include <string.h>
 
 #define MAX_BLOCK 1024
@@ -12,7 +12,7 @@ struct
    long offset;
    long length;
    long sub_block;
-   long sub_length[MAX_SUBBLOCK]
+   long sub_length[MAX_SUBBLOCK];
 } block[MAX_BLOCK];
 
 

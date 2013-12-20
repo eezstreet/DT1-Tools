@@ -4,6 +4,7 @@
 //#include <mem.h>
 //#include <dir.h>
 
+#define ALLEGRO_NO_MAGIC_MAIN
 #include <allegro.h>
 
 #define WORD  short int

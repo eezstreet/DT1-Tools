@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <mem.h>
-#include <dir.h>
-
+//#include <mem.h>
+//#include <dir.h>
+#define ALLEGRO_NO_MAGIC_MAIN
 #include <allegro.h>
 
 #define WORD  short int
@@ -22,7 +22,7 @@
 
 // reducing size of executable, for the allegro 3.9.34 (wip) lib
 
-BEGIN_GFX_DRIVER_LIST
+/*BEGIN_GFX_DRIVER_LIST
    GFX_DRIVER_VGA
 END_GFX_DRIVER_LIST
 
@@ -36,7 +36,7 @@ END_MIDI_DRIVER_LIST
 
 BEGIN_DIGI_DRIVER_LIST
    DIGI_DRIVER_SB
-END_DIGI_DRIVER_LIST
+END_DIGI_DRIVER_LIST*/
 
 typedef struct
 {
@@ -806,7 +806,7 @@ void read_ini_line(LINE_TYPE lt, void * ptr)
    if ( (lt >= LT_F1) && (lt <= LT_F5) )
    {
       if (sscanf(tmpline + c, "%02X %02X %02X %02X %02X",
-         ptr, ptr+1, ptr+2, ptr+3, ptr+4) != 5)
+         ptr, (unsigned int)ptr+1, (unsigned int)ptr+2, (unsigned int)ptr+3, (unsigned int)ptr+4) != 5)
       {
          sprintf(error, "couldn't read the 5 values behind '='");
          ini_error(error);
