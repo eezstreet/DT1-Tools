@@ -966,18 +966,18 @@ int main(int argc, char * argv[])
    strncpy(ini_ext,  argv[1] + period_pos, n - period_pos);
    
    // open pcx
-   sprintf(tmpfile, "%s%s-fa.pcx", ini_path, ini_name);
-   pcx[PT_FA] = load_pcx(tmpfile, &the_pal);
-   sprintf(tmpfile, "%s%s-fs.pcx", ini_path, ini_name);
-   pcx[PT_FS] = load_pcx(tmpfile, &the_pal);
-   sprintf(tmpfile, "%s%s-wu.pcx", ini_path, ini_name);
-   pcx[PT_WU] = load_pcx(tmpfile, &the_pal);
-   sprintf(tmpfile, "%s%s-wd.pcx", ini_path, ini_name);
-   pcx[PT_WD] = load_pcx(tmpfile, &the_pal);
+   sprintf(tmp_file, "%s%s-fa.pcx", ini_path, ini_name);
+   pcx[PT_FA] = load_pcx(tmp_file, &the_pal);
+   sprintf(tmp_file, "%s%s-fs.pcx", ini_path, ini_name);
+   pcx[PT_FS] = load_pcx(tmp_file, &the_pal);
+   sprintf(tmp_file, "%s%s-wu.pcx", ini_path, ini_name);
+   pcx[PT_WU] = load_pcx(tmp_file, &the_pal);
+   sprintf(tmp_file, "%s%s-wd.pcx", ini_path, ini_name);
+   pcx[PT_WD] = load_pcx(tmp_file, &the_pal);
 
    // dt1
-   sprintf(tmpfile, "NEW_%s.dt1", ini_name);
-   dt1 = fopen(tmpfile, "wb+");
+   sprintf(tmp_file, "NEW_%s.dt1", ini_name);
+   dt1 = fopen(tmp_file, "wb+");
    
    // read ini
    read_ini_all();
