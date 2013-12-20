@@ -509,7 +509,7 @@ int main(int argc, char * argv[])
    }
 
    // palette & atexit()
-   if (strcmp(argv[2], "-pal") == 0)
+   if (argv[2] && strcmp(argv[2], "-pal") == 0)
       load_palette(argv[3]);
    else
    {
