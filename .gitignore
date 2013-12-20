@@ -18,3 +18,9 @@
 *.suo
 *.user
 
+*/Debug/*
+dt1debug/dt1debug/Debug/*
+dt1extr/dt1extr/Debug/*
+dt1info/dt1info/Debug/*
+dt1make/dt1make/Debug/*
+*/ipch/*
